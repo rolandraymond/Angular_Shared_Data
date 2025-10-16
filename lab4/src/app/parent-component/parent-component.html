@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="card shadow p-3">
+    <h3 class="text-primary mb-3">Parent Component</h3>
+
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="username"
+        placeholder="Enter username"
+      />
+    </div>
+
+    <app-child-component
+      [username]="username"
+      (messageEvent)="receiveMessage($event)"
+    ></app-child-component>
+
+    <div class="alert alert-info mt-3" *ngIf="parentMessage">
+      <strong>Message from Child:</strong> {{ parentMessage }}
+    </div>
+
+    <div class="mt-4">
+      <button class="btn btn-primary" (click)="readMessage()">Read Shared Message</button>
+      <div class="alert alert-secondary mt-3">
+        <strong>Shared Message:</strong> {{ sharedMessage }}
+      </div>
+    </div>
+  </div>
+</div>
